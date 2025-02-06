@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/nameText"
+        android:id="@+id/CountryText"
         android:layout_width="186dp"
         android:layout_height="67dp"
         android:text="Landmark Country"
