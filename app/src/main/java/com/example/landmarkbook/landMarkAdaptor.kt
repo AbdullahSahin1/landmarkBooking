@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.landmarkbook.databinding.RecyclerRowBinding
 
 class landMarkAdaptor(val landmarkList:ArrayList<Landmark>): RecyclerView.Adapter<landMarkAdaptor.LandmarkHolder>() {
-    class LandmarkHolder(val binding: RecyclerRowBinding): RecyclerView.ViewHolder(binding.root){
+    class LandmarkHolder(val binding : RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
@@ -16,18 +16,19 @@ class landMarkAdaptor(val landmarkList:ArrayList<Landmark>): RecyclerView.Adapte
         val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return LandmarkHolder(binding)
     }
+
     override fun onBindViewHolder(holder: LandmarkHolder, position: Int) {
         holder.binding.recyclerViewTextView.text = landmarkList.get(position).name
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context,DetailsActivity::class.java)
+            intent.putExtra("landmark",landmarkList.get(position))
+            //Singleton.selectedLandmark = landmarkList.get(position)
+
+            holder.itemView.context.startActivity(intent)
         }
     }
-
-
 
     override fun getItemCount(): Int {
         return landmarkList.size
     }
-
-
 }
