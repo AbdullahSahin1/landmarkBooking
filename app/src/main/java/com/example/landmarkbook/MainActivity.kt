@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.landmarkbook.databinding.ActivityMainBinding
 import java.util.ArrayList
 
@@ -30,5 +31,10 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(london)
         landmarkList.add(koln)
         landmarkList.add(effiel)
+
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = landMarkAdaptor(landmarkList)
+        binding.recyclerView.adapter = adapter
+
     }
 }
